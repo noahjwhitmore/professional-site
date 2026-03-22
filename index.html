@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Writer & Researcher | Origin Undetermined</title>
+    
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Playfair Display (Literary/Serif) and Inter (Clean/Sans) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons for crisp, scalable vector icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        dark: '#0f172a', // Slate 900
+                        darker: '#020617', // Slate 950
+                        gold: '#fbbf24', // Amber 400 - for accents
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom styles for the scroll animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Blinking cursor for the typewriter effect */
+        .cursor::after {
+            content: '|';
+            animation: blink 1s step-start infinite;
+        }
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+
+        /* Subtle ambient background glow */
+        .ambient-glow {
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60vw;
+            height: 60vw;
+            background: radial-gradient(circle, rgba(30,58,138,0.15) 0%, rgba(2,6,23,0) 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="bg-darker text-gray-300 font-sans antialiased overflow-x-hidden selection:bg-gold selection:text-darker">
+
+    <!-- Ambient Background -->
+    <div class="ambient-glow"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 top-0 transition-all duration-300 backdrop-blur-md bg-darker/80 border-b border-gray-800" id="navbar">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#home" class="font-serif text-xl text-white font-bold tracking-wider">NOAH WHITMORE</a>
+            <div class="hidden md:flex space-x-8 text-sm uppercase tracking-widest font-semibold">
+                <a href="#about" class="hover:text-gold transition-colors">About</a>
+                <a href="#work" class="hover:text-gold transition-colors">Work</a>
+                <a href="#contact" class="hover:text-gold transition-colors">Contact</a>
+            </div>
+            <!-- Mobile Menu Button (simplified for wireframe) -->
+            <button class="md:hidden text-gray-300 hover:text-white">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex flex-col justify-center items-center text-center px-6 relative pt-20">
+        <div class="max-w-3xl mx-auto z-10 reveal">
+            <h1 class="font-serif text-5xl md:text-7xl text-white font-bold mb-6 leading-tight">
+                Crafting Truth <br/> <span class="text-gray-400 italic font-normal">& Fiction</span>
+            </h1>
+            <!-- Typewriter target element -->
+            <p class="text-xl md:text-2xl text-gray-400 mb-10 h-8 font-light" id="typewriter-text"></p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+                <a href="#work" class="px-8 py-4 bg-white text-darker font-bold rounded-full hover:bg-gold transition-colors duration-300 flex items-center justify-center gap-2">
+                    Discover My Work <i data-lucide="arrow-down" class="w-4 h-4"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 px-6 bg-dark border-y border-gray-800/50">
+        <div class="max-w-4xl mx-auto reveal">
+            <div class="flex items-center gap-4 mb-12 justify-center">
+                <div class="h-[1px] w-12 bg-gold"></div>
+                <h2 class="font-serif text-3xl md:text-4xl text-white font-bold text-center">About the Author</h2>
+                <div class="h-[1px] w-12 bg-gold"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6 text-lg leading-relaxed text-gray-400 font-light">
+                    <p>
+                        I am a writer, IT professional, and doctoral candidate based in Plattsmouth, Nebraska. My roots in storytelling and performance run deep; before working as a professional actor in Kansas City, Missouri, I was a <a href="https://nsaa-static.s3.amazonaws.com/textfile/speech/sphist.htm" target="_blank" rel="noopener noreferrer" class="text-gold hover:underline transition-colors">four-time state speech champion</a> and the <a href="https://nsaa-static.s3.amazonaws.com/textfile/plays/ppchamps.htm" target="_blank" rel="noopener noreferrer" class="text-gold hover:underline transition-colors">2004 NSAA "Outstanding Male Performer."</a>
+                    </p>
+                    <p>
+                        Today, I balance my work as a technology leader in the healthcare industry with rigorous academic research. As a DBA candidate, my research focuses on the strategic impact of emerging technologies on organizational performance. Whether I'm crafting a new dramatic script or mentoring the next generation of performers as a high school speech coach, my focus is always on the intersection of human connection and compelling narratives.
+                    </p>
+                </div>
+                <div class="relative">
+                    <!-- Author Photo: Save your photo as 'headshot.jpg' in the same folder as this file -->
+                    <div class="aspect-[4/5] bg-gray-800 rounded-lg shadow-2xl border border-gray-700/50 overflow-hidden relative group">
+                        <img src="img/noah-portrait.jpg" alt="Noah Whitmore" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                    </div>
+                    <!-- Decorative element -->
+                    <div class="absolute -bottom-4 -right-4 w-24 h-24 bg-gold/10 rounded-full blur-2xl -z-10"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Work Section (Origin Undetermined) -->
+    <section id="work" class="py-32 px-6 relative">
+        <div class="max-w-5xl mx-auto reveal">
+            <div class="text-center mb-16">
+                <span class="text-gold tracking-widest uppercase text-sm font-semibold">Featured Script</span>
+                <h2 class="font-serif text-4xl md:text-5xl text-white font-bold mt-2">Origin Undetermined</h2>
+            </div>
+
+            <div class="bg-gray-900/50 border border-gray-800 rounded-2xl p-8 md:p-12 shadow-2xl backdrop-blur-sm flex flex-col md:flex-row gap-10 items-center">
+                
+                <!-- Script Cover Placeholder -->
+                <div class="w-full md:w-1/3 flex-shrink-0">
+                    <div class="aspect-[2/3] bg-darker rounded-md shadow-xl border border-gray-700 flex flex-col items-center justify-center text-center relative overflow-hidden group">
+                        <!-- Book Cover Image -->
+                        <img src="img/ou-graphic.png" alt="Origin Undetermined" class="absolute inset-0 w-full h-full object-cover z-0">
+                        <!-- Subtle hover effect on the book cover -->
+                        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/40 to-black/90 group-hover:to-black/80 transition-all duration-500 z-10"></div>
+                        <h3 class="font-serif text-2xl text-white font-bold z-20 uppercase tracking-widest relative mt-auto pb-2">Origin<br>Undetermined</h3>
+                        <div class="h-[1px] w-12 bg-gold mb-2 z-20 relative mx-auto"></div>
+                        <p class="text-gray-300 text-sm z-20 relative pb-6">Noah Whitmore</p>
+                    </div>
+                </div>
+
+                <!-- Script Details & Amazon Link -->
+                <div class="w-full md:w-2/3 space-y-6 text-left">
+                    <h3 class="text-2xl text-white font-serif font-bold">A 10-12 Minute Duet Script for Competition</h3>
+                    <p class="text-gray-400 text-lg leading-relaxed font-light">
+                        <em>Origin Undetermined</em> is a high-stakes dramatic duet that blends science fiction with deeply human family dynamics. The story follows siblings Chloe, a brilliant theoretical physicist, and Ethan as they use a chronospatial displacement conduit to travel back to 2010.
+                    </p>
+                    <p class="text-gray-400 text-lg leading-relaxed font-light">
+                        Their mission: to discover the cause of the house fire that claimed their parents' lives. But as they navigate strict temporal constraints and their own strained relationship, they uncover a tragic, deeply personal truth that changes everything they thought they knew about their past.
+                    </p>
+                    
+                    <div class="pt-6">
+                        <a href="https://www.amazon.com/dp/B0GKXTDV97" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 px-8 py-4 bg-[#FF9900] hover:bg-[#FF9900]/90 text-black font-bold rounded-lg transition-all duration-300 transform hover:-translate-y-1 shadow-[0_0_20px_rgba(255,153,0,0.3)]">
+                            <i data-lucide="shopping-cart" class="w-5 h-5"></i>
+                            Buy Script on Amazon
+                        </a>
+                        <p class="text-sm text-gray-500 mt-4 italic">Available in Paperback and Kindle formats.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / Contact -->
+    <section id="contact" class="py-12 border-t border-gray-800 bg-darker">
+        <div class="max-w-4xl mx-auto px-6 text-center reveal">
+            <h2 class="font-serif text-2xl text-white mb-6">Connect with the Author</h2>
+            <div class="flex justify-center gap-6 mb-12">
+                <a href="mailto:your.email@example.com" class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-700 transition-colors">
+                    <i data-lucide="mail"></i>
+                </a>
+                <a href="#" class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-700 transition-colors">
+                    <i data-lucide="twitter"></i>
+                </a>
+                <a href="#" class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-700 transition-colors">
+                    <i data-lucide="linkedin"></i>
+                </a>
+            </div>
+            <p class="text-gray-600 text-sm">
+                &copy; <span id="year"></span> Noah Whitmore. All rights reserved.<br>
+                "Origin Undetermined" is a registered copyright.
+            </p>
+        </div>
+    </section>
+
+    <script>
+        // 1. Initialize Lucide Icons
+        lucide.createIcons();
+
+        // 2. Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // 3. Typewriter Effect Logic
+        const textToType = "Writer. Researcher. Storyteller.";
+        const typeTarget = document.getElementById('typewriter-text');
+        typeTarget.classList.add('cursor');
+        
+        let i = 0;
+        function typeWriter() {
+            if (i < textToType.length) {
+                typeTarget.innerHTML += textToType.charAt(i);
+                i++;
+                // Randomize typing speed slightly for realism
+                setTimeout(typeWriter, Math.random() * 50 + 50); 
+            } else {
+                // Keep cursor blinking for a few seconds, then optionally remove
+                setTimeout(() => {
+                    typeTarget.classList.remove('cursor');
+                }, 3000);
+            }
+        }
+        
+        // Start typewriter after a short delay on load
+        setTimeout(typeWriter, 500);
+
+        // 4. Scroll Reveal Animation Logic (Intersection Observer)
+        const reveals = document.querySelectorAll('.reveal');
+
+        const revealOptions = {
+            threshold: 0.15, // Trigger when 15% of element is visible
+            rootMargin: "0px 0px -50px 0px" // Trigger slightly before element hits bottom of viewport
+        };
+
+        const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) {
+                    return;
+                } else {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target); // Stop observing once revealed
+                }
+            });
+        }, revealOptions);
+
+        reveals.forEach(reveal => {
+            revealOnScroll.observe(reveal);
+        });
+
+        // 5. Navbar styling on scroll
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-lg');
+                navbar.classList.replace('py-4', 'py-2');
+            } else {
+                navbar.classList.remove('shadow-lg');
+                navbar.classList.replace('py-2', 'py-4');
+            }
+        });
+    </script>
+</body>
+</html>
