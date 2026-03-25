@@ -82,17 +82,26 @@
 
     <!-- Navigation -->
     <nav class="fixed w-full z-50 top-0 transition-all duration-300 backdrop-blur-md bg-darker/80 border-b border-gray-800" id="navbar">
-        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center relative">
             <a href="#home" class="font-serif text-xl text-white font-bold tracking-wider">NOAH WHITMORE</a>
             <div class="hidden md:flex space-x-8 text-sm uppercase tracking-widest font-semibold">
                 <a href="#about" class="hover:text-gold transition-colors">About</a>
                 <a href="#work" class="hover:text-gold transition-colors">Work</a>
                 <a href="#contact" class="hover:text-gold transition-colors">Contact</a>
             </div>
-            <!-- Mobile Menu Button (simplified for wireframe) -->
-            <button class="md:hidden text-gray-300 hover:text-white">
-                <i data-lucide="menu"></i>
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-gray-300 hover:text-white focus:outline-none transition-colors">
+                <i id="mobile-menu-icon" data-lucide="menu"></i>
             </button>
+        </div>
+        
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-darker/95 backdrop-blur-xl border-b border-gray-800 shadow-2xl">
+            <div class="flex flex-col px-6 py-6 space-y-6 text-center text-sm uppercase tracking-widest font-semibold">
+                <a href="#about" class="mobile-link text-gray-300 hover:text-gold transition-colors block">About</a>
+                <a href="#work" class="mobile-link text-gray-300 hover:text-gold transition-colors block">Work</a>
+                <a href="#contact" class="mobile-link text-gray-300 hover:text-gold transition-colors block">Contact</a>
+            </div>
         </div>
     </nav>
 
@@ -349,6 +358,35 @@
                 btn.disabled = false;
                 lucide.createIcons(); // Re-initialize the icon inside the button
             }
+        });
+
+        // 7. Mobile Menu Logic
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuIcon = document.getElementById('mobile-menu-icon');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        
+        let isMenuOpen = false;
+
+        function toggleMenu() {
+            isMenuOpen = !isMenuOpen;
+            if (isMenuOpen) {
+                mobileMenu.classList.remove('hidden');
+                mobileMenuIcon.setAttribute('data-lucide', 'x');
+            } else {
+                mobileMenu.classList.add('hidden');
+                mobileMenuIcon.setAttribute('data-lucide', 'menu');
+            }
+            lucide.createIcons(); // Re-render the icon (menu -> x)
+        }
+
+        mobileMenuBtn.addEventListener('click', toggleMenu);
+
+        // Close menu when a link is clicked
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (isMenuOpen) toggleMenu();
+            });
         });
     </script>
 </body>
