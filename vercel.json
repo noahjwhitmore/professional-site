@@ -1,10 +1,9 @@
-
 {
   "trailingSlash": true,
   "rewrites": [
     {
-      "source": "/ccllb",
-      "destination": "https://ccllb.vercel.app/"
+      "source": "/ccllb/",
+      "destination": "https://ccllb.vercel.app/index.html"
     },
     {
       "source": "/ccllb/:path*",
