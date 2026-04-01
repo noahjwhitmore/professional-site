@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/ccllb",
-      "destination": "https://ccllb.vercel.app"
+      "destination": "https://ccllb.vercel.app/"
     },
     {
       "source": "/ccllb/:path*",
