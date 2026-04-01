@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/ccllb",
+      "destination": "https://ccllb.vercel.app"
+    },
+    {
+      "source": "/ccllb/:path*",
+      "destination": "https://ccllb.vercel.app/:path*"
+    }
+  ]
+}
