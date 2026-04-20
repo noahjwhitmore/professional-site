@@ -1,0 +1,12 @@
+// Grab the URL parameters
+const urlParams = new URLSearchParams(window.location.search);
+
+const amount = urlParams.get('amt');
+const invoice = urlParams.get('item_name');
+const txId = urlParams.get('tx');
+
+if (amount && invoice) {
+    document.body.innerHTML += `<h1>Success!</h1>
+    <p>Your payment of $${amount} for ${invoice} has been received.</p>
+    <p>Transaction ID: ${txId}</p>`;
+}
