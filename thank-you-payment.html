@@ -1,12 +1,86 @@
-// Grab the URL parameters
-const urlParams = new URLSearchParams(window.location.search);
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Successful - Noah Whitmore IT Consulting</title>
+    <style>
+        :root { --primary: #2c3e50; --accent: #34495e; }
+        body { 
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; 
+            background: #f4f7f6; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh; 
+            margin: 0; 
+            color: #333; 
+        }
+        .card { 
+            background: white; 
+            padding: 40px; 
+            border-radius: 8px; 
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1); 
+            text-align: center; 
+            max-width: 500px; 
+            width: 90%; 
+        }
+        .icon { font-size: 50px; color: #27ae60; margin-bottom: 20px; }
+        h1 { color: var(--primary); margin-bottom: 10px; }
+        p { line-height: 1.6; color: #666; }
+        .details { 
+            background: #f9f9f9; 
+            padding: 15px; 
+            border-radius: 4px; 
+            margin: 20px 0; 
+            text-align: left; 
+            font-size: 14px; 
+            border-left: 4px solid var(--primary);
+        }
+        .btn { 
+            display: inline-block; 
+            background: var(--primary); 
+            color: white; 
+            padding: 12px 25px; 
+            text-decoration: none; 
+            border-radius: 4px; 
+            font-weight: bold; 
+            margin-top: 10px; 
+            transition: background 0.2s; 
+        }
+        .btn:hover { background: var(--accent); }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="icon">✔</div>
+        <h1>Payment Received!</h1>
+        <p>Thank you for your business. Your payment has been processed successfully.</p>
+        
+        <div id="receipt-details" class="details" style="display: none;">
+            <strong>Reference:</strong> <span id="display-invoice"></span><br>
+            <strong>Amount Paid:</strong> $<span id="display-amount"></span><br>
+            <strong>Transaction ID:</strong> <span id="display-tx"></span>
+        </div>
 
-const amount = urlParams.get('amt');
-const invoice = urlParams.get('item_name');
-const txId = urlParams.get('tx');
+        <p>A confirmation receipt has been sent to your email.</p>
+        <a href="https://noahwhitmore.com" class="btn">Return to noahwhitmore.com</a>
+    </div>
 
-if (amount && invoice) {
-    document.body.innerHTML += `<h1>Success!</h1>
-    <p>Your payment of $${amount} for ${invoice} has been received.</p>
-    <p>Transaction ID: ${txId}</p>`;
-}
+    <script>
+        // Use URLSearchParams to read the data from PayPal
+        const params = new URLSearchParams(window.location.search);
+        const amt = params.get('amt');
+        const inv = params.get('item_name');
+        const tx = params.get('tx');
+
+        // Only show the receipt box if we actually have data
+        if (amt || inv || tx) {
+            document.getElementById('receipt-details').style.display = 'block';
+            if (amt) document.getElementById('display-amount').innerText = amt;
+            if (inv) document.getElementById('display-invoice').innerText = inv;
+            if (tx) document.getElementById('display-tx').innerText = tx;
+        }
+    </script>
+</body>
+</html>
